@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 062e8e91067b7094e996ad04c010add9, type: 3}
+  m_Name: Fushigidane
+  m_EditorClassIdentifier: 
+  name: "\u30D5\u30B7\u30AE\u30C0\u30CD"
+  description: 
+  frontSprite: {fileID: 21300000, guid: 0f37bf3cf5680a64d863b5f155b2a597, type: 3}
+  backSprite: {fileID: 21300000, guid: 653a6fe1d97188644a3747cd5e674bc4, type: 3}
+  type1: 4
+  type2: 7
+  maxHP: 45
+  attack: 49
+  defense: 49
+  spAttack: 65
+  spDefense: 65
+  speed: 45
+  learnableMoves:
+  - _base: {fileID: 11400000, guid: 08907b8a36293c943a6c921aee2f9eb5, type: 2}
+    level: 5
+  - _base: {fileID: 11400000, guid: 1f81483ac245ed147a49b0f4fd7f457e, type: 2}
+    level: 10
+  - _base: {fileID: 11400000, guid: 62cb3d2b1829b154aaf29c65f965987e, type: 2}
+    level: 20
