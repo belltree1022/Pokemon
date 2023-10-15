@@ -4622,7 +4622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _base: {fileID: 11400000, guid: db7eb91805778854a835a103a9e7bfeb, type: 2}
-  level: 0
+  level: 14
   isPlayerUnit: 0
 --- !u!1 &1210383568
 GameObject:
@@ -6427,7 +6427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _base: {fileID: 11400000, guid: c6afcbec1b321f849a9ec7e8f79f93f5, type: 2}
-  level: 0
+  level: 20
   isPlayerUnit: 1
 --- !u!1 &1717035619
 GameObject:
