@@ -63,7 +63,7 @@ public class BattleDialogBox : MonoBehaviour
     {
         for (int i = 0; i < actionTexts.Count; i++)
         {
-            if (selectAction == 1)
+            if (selectAction == i)
             {
                 actionTexts[i].color = highlightColor;
             }
