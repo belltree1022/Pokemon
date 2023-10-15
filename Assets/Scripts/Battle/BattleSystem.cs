@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 public class BattleSystem : MonoBehaviour
@@ -17,9 +17,9 @@ public class BattleSystem : MonoBehaviour
     }
     IEnumerator SetupBattle()
     {
-        playerUnit.Setup(); //ƒ‚ƒ“ƒXƒ^[‚Ì¶¬‚Æ•Ç‰æ
+        playerUnit.Setup(); //ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½^ï¿½[ï¿½Ìï¿½ï¿½ï¿½ï¿½Æ•Ç‰ï¿½
         enemyUnit.Setup();
-        //HUD‚Ì•Ç‰æ
+        //HUDï¿½Ì•Ç‰ï¿½
         playerHud.SetData(playerUnit.Pokemon);
         enemyHud.SetData(enemyUnit.Pokemon);
 
@@ -32,7 +32,7 @@ public class BattleSystem : MonoBehaviour
 
     private void Update()
     {
-        //‰º‚ğ“ü—Í‚·‚é‚ÆRun,ã‚ğ“ü—ÍFight‚É‚È‚é
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í‚ï¿½ï¿½ï¿½ï¿½Run,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Fightï¿½É‚È‚ï¿½
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             if (currentAction < 1)
@@ -46,13 +46,13 @@ public class BattleSystem : MonoBehaviour
             {
                 currentAction--;
             }
-           
+
         }
 
         dialogBox.UpdateActionSelection(currentAction);
 
 
-       if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             if (currentAction == 0)
             {

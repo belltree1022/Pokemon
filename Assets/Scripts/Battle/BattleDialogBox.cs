@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,8 +7,8 @@ public class BattleDialogBox : MonoBehaviour
 
     [SerializeField] Color highlightColor;
 
-    //–ğŠ„:dialog‚Ì‚s‚…‚˜‚”‚ğ“ü—Í‚µ‚ÄA•ÏX‚·‚é
-    [SerializeField] int letterPerSecond; //1•¶š‚ ‚½‚è‚Ì•\¦‘¬“x
+    //ï¿½ï¿½ï¿½ï¿½:dialogï¿½Ì‚sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í‚ï¿½ï¿½ÄAï¿½ÏXï¿½ï¿½ï¿½ï¿½
+    [SerializeField] int letterPerSecond; //1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì•\ï¿½ï¿½ï¿½ï¿½ï¿½x
     [SerializeField] Text dialogText;
 
     [SerializeField] GameObject actionSelector;
@@ -21,13 +21,13 @@ public class BattleDialogBox : MonoBehaviour
     [SerializeField] Text ppText;
     [SerializeField] Text typeText;
 
-    //Text‚ğ•ÏX‚·‚é‚½‚ß‚ÌŠÖ”
+    //Textï¿½ï¿½ÏXï¿½ï¿½ï¿½é‚½ï¿½ß‚ÌŠÖï¿½
     public void SetDialog(string dialog)
     {
         dialogText.text = dialog;
     }
 
-    //ƒ^ƒCƒvŒ`®‚Å•¶š‚ğ•\¦‚·‚é
+    //ï¿½^ï¿½Cï¿½vï¿½`ï¿½ï¿½ï¿½Å•ï¿½ï¿½ï¿½ï¿½ï¿½\ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public IEnumerator TypeDialog(string dialog)
     {
 
@@ -39,8 +39,8 @@ public class BattleDialogBox : MonoBehaviour
         }
     }
 
-    //UI‚Ì•\¦
-    //dialogtext‚Ì•\¦
+    //UIï¿½Ì•\ï¿½ï¿½
+    //dialogtextï¿½Ì•\ï¿½ï¿½
     public void EnableDialogText(bool enabled)
     {
         dialogText.enabled = enabled;
@@ -51,14 +51,14 @@ public class BattleDialogBox : MonoBehaviour
         actionSelector.SetActive(enabled);
     }
 
-    //moveselector‚Ì•\¦
+    //moveselectorï¿½Ì•\ï¿½ï¿½
     public void EnableMoveSelector(bool enabled)
     {
         moveSelector.SetActive(enabled);
         moveDetails.SetActive(enabled);
     }
 
-    //‘I‘ğ’†‚ÌF‚ğ•Ï‚¦‚é
+    //ï¿½Iï¿½ğ’†‚ÌFï¿½ï¿½Ï‚ï¿½ï¿½ï¿½
     public void UpdateActionSelection(int selectAction)
     {
         for (int i = 0; i < actionTexts.Count; i++)
