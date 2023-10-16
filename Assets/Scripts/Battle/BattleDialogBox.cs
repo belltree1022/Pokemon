@@ -73,4 +73,9 @@ public class BattleDialogBox : MonoBehaviour
             }
         }
     }
+
+    public void SetMoveNames(List<Move> moves)
+    {
+        moveTexts[0].text = moves[0].Base.Name;
+    }
 }

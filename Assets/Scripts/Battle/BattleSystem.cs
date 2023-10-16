@@ -1,6 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+public enum BattleState
+{
+    Start,
+    PlayerAction,
+    PlayerMove,
+    EnemyMove,
+    Busy,
+}
 public class BattleSystem : MonoBehaviour
 {
     [SerializeField] BattleUnit playerUnit;
@@ -8,8 +16,7 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] BattleHud playerHud;
     [SerializeField] BattleHud enemyHud;
     [SerializeField] BattleDialogBox dialogBox;
-
-
+    BattleState state;
     int currentAction; //0:Fight 1:Run
     private void Start()
     {
@@ -17,22 +24,37 @@ public class BattleSystem : MonoBehaviour
     }
     IEnumerator SetupBattle()
     {
-        playerUnit.Setup(); //�����X�^�[�̐����ƕǉ�
+        state = BattleState.Start;
+        playerUnit.Setup();
         enemyUnit.Setup();
-        //HUD�̕ǉ�
         playerHud.SetData(playerUnit.Pokemon);
         enemyHud.SetData(enemyUnit.Pokemon);
-
-        yield return dialogBox.TypeDialog($"A wild {enemyUnit.Pokemon.Base.Name} apeared");
+        yield return dialogBox.TypeDialog($"A wild {enemyUnit.Pokemon.Base.Name} appeared");
         yield return new WaitForSeconds(1);
-        dialogBox.EnableActionSelector(true);
-        yield return dialogBox.TypeDialog("chose an action");
-
+        PlayerAction();
     }
-
+    void PlayerAction()
+    {
+        state = BattleState.PlayerAction; // Update the battle state
+        dialogBox.EnableActionSelector(true);
+        StartCoroutine(dialogBox.TypeDialog("Choose an action"));
+    }
+    void PlayerMove()
+    {
+        state = BattleState.PlayerMove;
+        dialogBox.EnableDialogText(false);
+        dialogBox.EnableActionSelector(false);
+        dialogBox.EnableMoveSelector(true);
+    }
     private void Update()
     {
-        //������͂����Run,������Fight�ɂȂ�
+        if (state == BattleState.PlayerAction)
+        {
+            HandleActionSelection();
+        }
+    }
+    void HandleActionSelection()
+    {
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             if (currentAction < 1)
@@ -46,21 +68,13 @@ public class BattleSystem : MonoBehaviour
             {
                 currentAction--;
             }
-
         }
-
         dialogBox.UpdateActionSelection(currentAction);
-
-
         if (Input.GetKeyDown(KeyCode.Z))
         {
             if (currentAction == 0)
             {
-
-
-                dialogBox.EnableDialogText(false);
-                dialogBox.EnableActionSelector(false);
-                dialogBox.EnableMoveSelector(true);
+                PlayerMove();
             }
         }
     }

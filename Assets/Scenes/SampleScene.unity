@@ -6848,6 +6848,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6278663cbc3b561408bc7056ec56577a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  highlightColor: {r: 1, g: 0.33490568, b: 0.65318274, a: 1}
   letterPerSecond: 80
   dialogText: {fileID: 836552176}
   actionSelector: {fileID: 2026644708}
