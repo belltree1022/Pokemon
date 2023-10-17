@@ -75,13 +75,13 @@ public class BattleDialogBox : MonoBehaviour
         }
     }
 
-    public void UpdateMoveSelection(int moveIndex,Move move)
+    public void UpdateMoveSelection(int moveIndex, Move move)
     {
-        for (int i = 0; i < actionTexts.Count; i++)
+        for (int i = 0; i < moveTexts.Count; i++)
         {
             if (moveIndex == i)
             {
-               moveTexts[i].color = highlightColor;
+                moveTexts[i].color = highlightColor;
             }
             else
             {
@@ -95,7 +95,7 @@ public class BattleDialogBox : MonoBehaviour
 
     public void SetMovenames(List<Move> moves)
     {
-        
+
         for (int i = 0; i < moveTexts.Count; i++)
         {
             if (i < moves.Count)

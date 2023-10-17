@@ -18,12 +18,13 @@ public class MoveBase : ScriptableObject
     [SerializeField] int accuracy;//seikausei
     [SerializeField] int pp;
 
-    public string Name { get => name;}
-    public string Description { get => description;  }
+   
+    public string Name{ get => name; }
+    public string Description { get => description; }
     public PokemonBase Type { get => type; }
-    public int Power { get => power;  }
-    public int Accuracy { get => accuracy;}
-    public int Pp { get => pp;  }
+    public int Power { get => power; }
+    public int Accuracy { get => accuracy; }
+    public int Pp { get => pp; }
 
     //ほかのファイルから参照するためにプロパティ
 

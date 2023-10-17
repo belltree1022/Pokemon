@@ -104,7 +104,7 @@ public class BattleSystem : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            if (currentMove < playerUnit.Pokemon.Moves.Count-2)
+            if (currentMove < playerUnit.Pokemon.Moves.Count - 2)
             {
                 currentMove += 2;
             }

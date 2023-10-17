@@ -38,6 +38,11 @@ public class Pokemon
                 Moves.Add(new Move(learnableMove.Base));
             }
             //4‚ÂˆÈã‚Ì‹Z‚Íg‚¦‚È‚¢
+
+
+
+
+
             if (Moves.Count >= 4)
             {
                 break;
