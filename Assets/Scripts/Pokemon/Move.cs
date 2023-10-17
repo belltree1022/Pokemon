@@ -11,13 +11,13 @@ public class Move
 
     // Pokemon.cs‚ªQÆ‚·‚é‚Ì‚Åpublic‚É‚µ‚Ä‚¨‚­
     public MoveBase Base { get; set; }
-    public int Pp { get; set; }
+    public int PP { get; set; }
 
 
     // ‰Šúİ’è
     public Move(MoveBase pBase)
     {
         Base = pBase;
-        Pp = pBase.Pp;
+        PP = pBase.PP;
     }
 }

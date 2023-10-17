@@ -1,4 +1,4 @@
-ï»¿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -8,8 +8,8 @@ public class BattleDialogBox : MonoBehaviour
 
     [SerializeField] Color highlightColor;
 
-    //ï¿½ï¿½ï¿½ï¿½:dialogï¿½Ì‚sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í‚ï¿½ï¿½ÄAï¿½ÏXï¿½ï¿½ï¿½ï¿½
-    [SerializeField] int letterPerSecond; //1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì•\ï¿½ï¿½ï¿½ï¿½ï¿½x
+    //??¿½?¿½??¿½?¿½??¿½?¿½??¿½?¿½:dialog??¿½?¿½Ì‚s??¿½?¿½??¿½?¿½??¿½?¿½??¿½?¿½??¿½?¿½??¿½?¿½??¿½?¿½??¿½?¿½??¿½?¿½??¿½?¿½Í‚ï¿½??¿½?¿½ÄA??¿½?¿½ÏX??¿½?¿½??¿½?¿½??¿½?¿½??¿½?¿½
+    [SerializeField] int letterPerSecond; //1??¿½?¿½??¿½?¿½??¿½?¿½??¿½?¿½??¿½?¿½??¿½?¿½??¿½?¿½??¿½?¿½??¿½?¿½??¿½?¿½Ì•\??¿½?¿½??¿½?¿½??¿½?¿½??¿½?¿½??¿½?¿½x
     [SerializeField] Text dialogText;
 
     [SerializeField] GameObject actionSelector;
@@ -20,15 +20,15 @@ public class BattleDialogBox : MonoBehaviour
     [SerializeField] List<Text> moveTexts;
 
     [SerializeField] Text ppText;
-    [SerializeField] Text typeText;
+    [SerializeField] public Text typeText;
 
-    //Textï¿½ï¿½ÏXï¿½ï¿½ï¿½é‚½ï¿½ß‚ÌŠÖï¿½
+    //Text??¿½?¿½??¿½?¿½ÏX??¿½?¿½??¿½?¿½??¿½?¿½é‚½??¿½?¿½ß‚ÌŠÖï¿½
     public void SetDialog(string dialog)
     {
         dialogText.text = dialog;
     }
 
-    //ï¿½^ï¿½Cï¿½vï¿½`ï¿½ï¿½ï¿½Å•ï¿½ï¿½ï¿½ï¿½ï¿½\ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    //??¿½?¿½^??¿½?¿½C??¿½?¿½v??¿½?¿½`??¿½?¿½??¿½?¿½??¿½?¿½Å•ï¿½??¿½?¿½??¿½?¿½??¿½?¿½??¿½?¿½\??¿½?¿½??¿½?¿½??¿½?¿½??¿½?¿½??¿½?¿½??¿½?¿½
     public IEnumerator TypeDialog(string dialog)
     {
 
@@ -40,8 +40,8 @@ public class BattleDialogBox : MonoBehaviour
         }
     }
 
-    //UIï¿½Ì•\ï¿½ï¿½
-    //dialogtextï¿½Ì•\ï¿½ï¿½
+    //UI??¿½?¿½Ì•\??¿½?¿½??¿½?¿½
+    //dialogtext??¿½?¿½Ì•\??¿½?¿½??¿½?¿½
     public void EnableDialogText(bool enabled)
     {
         dialogText.enabled = enabled;
@@ -52,14 +52,14 @@ public class BattleDialogBox : MonoBehaviour
         actionSelector.SetActive(enabled);
     }
 
-    //moveselectorï¿½Ì•\ï¿½ï¿½
+    //moveselector??¿½?¿½Ì•\??¿½?¿½??¿½?¿½
     public void EnableMoveSelector(bool enabled)
     {
         moveSelector.SetActive(enabled);
         moveDetails.SetActive(enabled);
     }
 
-    //ï¿½Iï¿½ğ’†‚ÌFï¿½ï¿½Ï‚ï¿½ï¿½ï¿½
+    //??¿½?¿½I??¿½?¿½???¿½ÌF??¿½?¿½??¿½?¿½Ï‚ï¿½??¿½?¿½??¿½?¿½
     public void UpdateActionSelection(int selectAction)
     {
         for (int i = 0; i < actionTexts.Count; i++)
@@ -75,7 +75,7 @@ public class BattleDialogBox : MonoBehaviour
         }
     }
 
-    public void UpdateMoveSelection(int selectMove,Move move)
+    public void UpdateMoveSelection(int selectMove, Move move)
     {
         for (int i = 0; i < moveTexts.Count; i++)
         {
@@ -87,9 +87,24 @@ public class BattleDialogBox : MonoBehaviour
             {
                 moveTexts[i].color = Color.black;
             }
+            // Debug.Log("move:"+move.PP);
+            // Debug.Log("moveBase:"+move.Base.PP);
+            ppText.text = $"PP {move.PP}/{move.Base.PP}";
+            // if (typeText == null)
+            // {
+            //     Debug.LogError("typeText is null.");
+            // }
+            // else
+            // {
+            //     // typeText ‚Í null ‚Å‚Í‚È‚¢‚Ì‚ÅA‰½‚©ˆ—‚ğs‚¤‚±‚Æ‚ª‚Å‚«‚Ü‚·B
+            //     // —á: typeText ‚ÌƒeƒLƒXƒg‚ğæ“¾‚µ‚Ä•\¦‚·‚é
+            //     Debug.Log("typeText is not null. Text: " + typeText.text);
+            // }
+            //Debug.Log("Type:" + move.Base.Type.ToString());
+            
+            typeText.text = move.Base.Type.ToString();
+            // typeText.text = "1";
         }
-        ppText.text = $"PP{move.Pp}/{move.Base.Pp}";
-        typeText.text = move.Base.Type.ToString();
     }
 
     public void SetMovenames(List<Move> moves)
