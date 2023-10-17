@@ -75,7 +75,7 @@ public class BattleDialogBox : MonoBehaviour
         }
     }
 
-    public void UpdateMoveSelection(int selectMove)
+    public void UpdateMoveSelection(int selectMove,Move move)
     {
         for (int i = 0; i < moveTexts.Count; i++)
         {
@@ -88,6 +88,8 @@ public class BattleDialogBox : MonoBehaviour
                 moveTexts[i].color = Color.black;
             }
         }
+        ppText.text = $"PP{move.Pp}/{move.Base.Pp}";
+        typeText.text = move.Base.Type.ToString();
     }
 
     public void SetMovenames(List<Move> moves)
