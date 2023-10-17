@@ -77,14 +77,9 @@ public class BattleDialogBox : MonoBehaviour
 
     public void SetMovenames(List<Move> moves)
     {
-        moveTexts[0].text = moves[0].Base.Name;
-        moveTexts[1].text = moves[1].Base.Name;
-        moveTexts[2].text = moves[2].Base.Name;
-        moveTexts[3].text = moves[3].Base.Name;
 
-        for (int i = 0; i < moveTexts.Count; i++) 
+        for (int i = 0; i < moveTexts.Count; i++)
         {
-            //覚えている技だけ反映
             if (i < moves.Count)
             {
                 moveTexts[i].text = moves[i].Base.Name;
@@ -93,7 +88,6 @@ public class BattleDialogBox : MonoBehaviour
             {
                 moveTexts[i].text = ".";
             }
-           
         }
     }
 }

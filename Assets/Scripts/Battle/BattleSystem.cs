@@ -29,6 +29,7 @@ public class BattleSystem : MonoBehaviour
         enemyUnit.Setup();
         playerHud.SetData(playerUnit.Pokemon);
         enemyHud.SetData(enemyUnit.Pokemon);
+        dialogBox.SetMovenames(playerUnit.Pokemon.Moves);
         yield return dialogBox.TypeDialog($"A wild {enemyUnit.Pokemon.Base.Name} appeared");
         yield return new WaitForSeconds(1);
         PlayerAction();
