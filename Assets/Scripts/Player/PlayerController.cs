@@ -4,24 +4,17 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    //????????蓖???????R???C?_?[???????B
+    //SerializeFieldで付与されたものがインスペクターに表示、
+    [SerializeField] float moveSpeed;// 動く速さを定義して、インスペクターに表示
 
+    bool isMoveing; //ismovingのbool型、TrueとFalseかを取る
+    Vector2 input; //2Dベクトルの要素を代入（Xが水平、Yが縦方向）
 
+    Animator animator;//アニメータ機能
 
+    //
+    [SerializeField] LayerMask SolidObjestLayer;//
 
-
-    //player????
-    [SerializeField] float moveSpeed;
-
-    bool isMoveing;
-    Vector2 input;
-
-    Animator animator;
-
-    //??????layer
-    [SerializeField] LayerMask SolidObjestLayer;
-
-    //????画???layer
     [SerializeField] LayerMask longGrassLayer;
     private void Awake()
     {
@@ -36,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
         if (!isMoveing)
         {
-            //?L?[?{?[?h?????????????
+          
             input.x = Input.GetAxisRaw("Horizontal");
             input.y = Input.GetAxisRaw("Vertical");
 

@@ -11,17 +11,17 @@ public enum BattleState
 }
 public class BattleSystem : MonoBehaviour
 {
-    [SerializeField] BattleUnit playerUnit;
-    [SerializeField] BattleUnit enemyUnit;
-    [SerializeField] BattleHud playerHud;
-    [SerializeField] BattleHud enemyHud;
-    [SerializeField] BattleDialogBox dialogBox;
+    [SerializeField] BattleUnit playerUnit;//バトルシステムのオブジェクトにplayerunitのプロジェクトをインスペクターに追加できるようにする
+    [SerializeField] BattleUnit enemyUnit;//バトルシステムのオブジェクトにenemyUnitのプロジェクトをインスペクターに追加できるようにする
+    [SerializeField] BattleHud playerHud;//バトルシステムのオブジェクトplayerHudtのプロジェクトをインスペクターに追加できるようにする
+    [SerializeField] BattleHud enemyHud;//バトルシステムのオブジェクトにenemyHudtのプロジェクトをインスペクターに追加できるようにする
+    [SerializeField] BattleDialogBox dialogBox;//バトルシステムのオブジェクトにdialogBoxのプロジェクトをインスペクターに追加できるようにする
     BattleState state;
     int currentAction; //0:Fight 1:Run
     int currentMove;
     private void Start()
     {
-        StartCoroutine(SetupBattle());
+        StartCoroutine(SetupBattle());//setupbattleのコルーチンを開始、コルーチン：中断できる処理のまとまり、数秒後に何か処理を行いたいときややめたいときに使用
     }
     IEnumerator SetupBattle()
     {
