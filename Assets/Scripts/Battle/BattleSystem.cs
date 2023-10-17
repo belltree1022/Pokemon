@@ -55,7 +55,7 @@ public class BattleSystem : MonoBehaviour
             HandleActionSelection();
         }
 
-        else if (state == BattleState.PlayerAction)
+        else if (state == BattleState.PlayerMove)
         {
             HandleMoveSelection();
         }
