@@ -116,7 +116,7 @@ public class BattleSystem : MonoBehaviour
                 currentMove -= 2;
             }
         }
-        dialogBox.UpdateMoveSelection(currentMove, playerUnit.Pokemon.Moves[currentMove]);
+        dialogBox.UpdateMoveSelection(currentMove);
     }
 }
 
