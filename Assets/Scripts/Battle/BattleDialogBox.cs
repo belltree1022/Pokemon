@@ -6,18 +6,16 @@ using UnityEngine.UI;
 public class BattleDialogBox : MonoBehaviour
 {
 
-    [SerializeField] Color highlightColor;
+    [SerializeField] Color highlightColor;//colorの中にHighlightcolorのインスペクターを追加、このおかげでコマンドを選択するときに色に設定できる。
 
-    //??ｿｽ?ｿｽ??ｿｽ?ｿｽ??ｿｽ?ｿｽ??ｿｽ?ｿｽ:dialog??ｿｽ?ｿｽﾌＴ??ｿｽ?ｿｽ??ｿｽ?ｿｽ??ｿｽ?ｿｽ??ｿｽ?ｿｽ??ｿｽ?ｿｽ??ｿｽ?ｿｽ??ｿｽ?ｿｽ??ｿｽ?ｿｽ??ｿｽ?ｿｽ??ｿｽ?ｿｽﾍゑｿｽ??ｿｽ?ｿｽﾄ、??ｿｽ?ｿｽﾏ更??ｿｽ?ｿｽ??ｿｽ?ｿｽ??ｿｽ?ｿｽ??ｿｽ?ｿｽ
-    [SerializeField] int letterPerSecond; //1??ｿｽ?ｿｽ??ｿｽ?ｿｽ??ｿｽ?ｿｽ??ｿｽ?ｿｽ??ｿｽ?ｿｽ??ｿｽ?ｿｽ??ｿｽ?ｿｽ??ｿｽ?ｿｽ??ｿｽ?ｿｽ??ｿｽ?ｿｽﾌ表??ｿｽ?ｿｽ??ｿｽ?ｿｽ??ｿｽ?ｿｽ??ｿｽ?ｿｽ??ｿｽ?ｿｽx
-    [SerializeField] Text dialogText;
+    [SerializeField] int letterPerSecond; //インスペクターにlettrPesSecondを定義、この時間を調整することで時間を文字が出てくる時間を調整
+    [SerializeField] Text dialogText;　//インスペクターにdialogtextを追加、ここで自分が打った文字を反映するとその文字が追加される
 
-    [SerializeField] GameObject actionSelector;
-    [SerializeField] GameObject moveSelector;
-    [SerializeField] GameObject moveDetails;
-
-    [SerializeField] List<Text> actionTexts;
-    [SerializeField] List<Text> moveTexts;
+    [SerializeField] GameObject actionSelector;//バトルダイアログのBOXにactionselelctor用のインスペクターを追加
+    [SerializeField] GameObject moveSelector;//バトルダイアログのBOXにmoveselector用のインスペクターを追加
+    [SerializeField] GameObject moveDetails;//バトルダイアログのBOXactionselector用のインスペクターを追加
+    [SerializeField] List<Text> actionTexts;//アクションテキストをインスペクターに追加、Listだから個数を選べる、例えば２つなら２つ　今回の場合、戦うか逃げるか
+    [SerializeField] List<Text> moveTexts;//movetextををインスペクターに追加、Listだから個数を選べる、例えば２つなら２つ、今回の場合技名
 
     [SerializeField] Text ppText;
     [SerializeField] public Text typeText;

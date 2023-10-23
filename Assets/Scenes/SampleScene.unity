@@ -413,10 +413,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Fight
-
-
-'
+  m_Text: "\u305F\u305F\u304B\u3046"
 --- !u!222 &392267943
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4336,10 +4333,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Run
-
-
-'
+  m_Text: "\u306B\u3052\u308B\n\n"
 --- !u!222 &846974797
 CanvasRenderer:
   m_ObjectHideFlags: 0

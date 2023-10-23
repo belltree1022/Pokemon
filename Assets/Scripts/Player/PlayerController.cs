@@ -12,9 +12,9 @@ public class PlayerController : MonoBehaviour
 
     Animator animator;//アニメータ機能
 
-    //
+    //壁判定のLayer
     [SerializeField] LayerMask SolidObjestLayer;//
-
+    //草むらＬａｙｅｒの判定
     [SerializeField] LayerMask longGrassLayer;
     private void Awake()
     {
@@ -26,15 +26,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (!isMoveing)
+        
+        if (!isMoveing)//ismovingで移動中には入力を受け付けない
         {
-          
+            //得た情報を保持するために定義付け　//キーボードの入力があったらその方向に動く
             input.x = Input.GetAxisRaw("Horizontal");
             input.y = Input.GetAxisRaw("Vertical");
 
-            //?????
-            if (input.x != 0)
+            
+            if (input.x != 0) //斜め移動　これで禁止できる
             {
                 input.y = 0;
             }
@@ -45,9 +45,11 @@ public class PlayerController : MonoBehaviour
                 //?R???[?`?????g??????X???I?n???????
                 animator.SetFloat("moveX", input.x);
                 animator.SetFloat("moveY", input.y);
+
+               
                 Vector2 targetPos = transform.position;
                 targetPos += input;
-                if (IsWalkable(targetPos)){
+                if (IsWalkable(targetPos)){　//入力する前に歩けるかどうかを確認する
                     StartCoroutine(Move(targetPos));
                 }
 
@@ -60,8 +62,8 @@ public class PlayerController : MonoBehaviour
 
     }
 
-      
-    //?R???[?`?????g??????X???I?n???????
+
+    //コルーチンを使用して徐々に移動
     IEnumerator Move(Vector3 targetPos)
     {
 
@@ -69,13 +71,13 @@ public class PlayerController : MonoBehaviour
 
         isMoveing = true;
 
-        //targetPos???????????J????
+        //targetPosと現在の場所を引き算　targetposとの差が左にあるなら繰り返す
         while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
         {
-            //transform???????
+            //targetposに近づける
             transform.position = Vector3.MoveTowards(
-                transform.position,//??????
-                targetPos,//??I?n
+                transform.position,//現在の場所
+                targetPos,//目的地
                 moveSpeed*Time.deltaTime);
 
             yield return null;
@@ -85,27 +87,25 @@ public class PlayerController : MonoBehaviour
         CheckForEncounters();
     }
 
-    //targetPos??????\??????
+    //targetPosに移動可能かを調べる関数
     bool IsWalkable(Vector2 targetPos)
     {
-        // tagetPos????a0.2f??~??Ray???????A??????????????????false
-        //??????????"!"
+        //tagetPosに半径0.2ｆの円のＲａｙを飛ばして、ぶつからなかったらＦａｌｓｅ
         return Physics2D.OverlapCircle(targetPos, 0.2f, SolidObjestLayer) == false;
 
-        //???????????~??Ray???????A?????Layer???????????A?????_???G???J?E???g
     }
         void CheckForEncounters()
         {
             if (Physics2D.OverlapCircle(transform.position, 0.2f, longGrassLayer))
             {
-                //?????_???G???J?E???g
+                //ランダムカウント
                 if (Random.Range(0, 100) < 10)
                 {
 
-                    //Random.Range(0,100):0~99??????????????o??
-                    //10?????????????0~9????10??
-                    //10?????????10~99????90?q
-                    Debug.Log("?????X?^?[?????");
+                //random.range(0,100):0~99までのどれかの数字が出る
+                //10より小さい数字は０～９までの10個
+                //10以上の数字は10～99までの99個
+                Debug.Log("モンスターに遭遇");
                 }
 
             }

@@ -5,16 +5,27 @@ using UnityEngine.UI;
 
 public class BattleHud : MonoBehaviour
 {
-    [SerializeField] Text nameText; //ƒCƒ“ƒXƒyƒNƒ^[‚Éƒ‚ƒ“ƒXƒ^[‚Ì–¼‘O‚ğİ’è‚Å‚«‚é
-    [SerializeField] Text levelText;//ƒCƒ“ƒXƒyƒNƒ^[‚Éƒ‚ƒ“ƒXƒ^[‚ÌƒŒƒxƒ‹‚ğİ’è‚Å‚«‚é
-    [SerializeField] Hpbar hpbar;//ƒCƒ“ƒXƒyƒNƒ^[‚Éƒ‚ƒ“ƒXƒ^[‚ÌHPi‘Ì—Íj’Ç‰Á
+    [SerializeField] Text nameText; //ï¿½Cï¿½ï¿½ï¿½Xï¿½yï¿½Nï¿½^ï¿½[ï¿½Éƒï¿½ï¿½ï¿½ï¿½Xï¿½^ï¿½[ï¿½Ì–ï¿½ï¿½Oï¿½ï¿½İ’ï¿½Å‚ï¿½ï¿½ï¿½
+    [SerializeField] Text levelText;//ï¿½Cï¿½ï¿½ï¿½Xï¿½yï¿½Nï¿½^ï¿½[ï¿½Éƒï¿½ï¿½ï¿½ï¿½Xï¿½^ï¿½[ï¿½Ìƒï¿½ï¿½xï¿½ï¿½ï¿½ï¿½İ’ï¿½Å‚ï¿½ï¿½ï¿½
+    [SerializeField] Hpbar hpbar;//ï¿½Cï¿½ï¿½ï¿½Xï¿½yï¿½Nï¿½^ï¿½[ï¿½Éƒï¿½ï¿½ï¿½ï¿½Xï¿½^ï¿½[ï¿½ï¿½HPï¿½iï¿½Ì—Íjï¿½Ç‰ï¿½
+
+    Pokemon _pokemon;
+
+
 
 
     public void SetData(Pokemon pokemon)
     {
+        _pokemon=pokemon;
         nameText.text = pokemon.Base.Name; 
         levelText.text = "LV " + pokemon.Level;
         hpbar.SetHP((float)pokemon.HP/pokemon.MaxHp);
+
+    }
+
+    public void UpdateHP() //HPã‚’åæ˜ ãƒ€ãƒ¡ãƒ¼ã‚¸è¨ˆç®—
+    {
+        hpbar.SetHP((float)_pokemon.HP/_pokemon.MaxHp);
 
     }
 }

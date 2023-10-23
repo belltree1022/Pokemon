@@ -31,7 +31,7 @@ public class BattleSystem : MonoBehaviour
         playerHud.SetData(playerUnit.Pokemon);
         enemyHud.SetData(enemyUnit.Pokemon);
         dialogBox.SetMovenames(playerUnit.Pokemon.Moves);
-        yield return dialogBox.TypeDialog($"A wild {enemyUnit.Pokemon.Base.Name} appeared");
+        yield return dialogBox.TypeDialog($"やせいの {enemyUnit.Pokemon.Base.Name} があらわれた");
         yield return new WaitForSeconds(1);
         PlayerAction();
     }
@@ -48,6 +48,38 @@ public class BattleSystem : MonoBehaviour
         dialogBox.EnableActionSelector(false);
         dialogBox.EnableMoveSelector(true);
     }
+
+    //PlayerMoveの実行
+    IEnumerator PerformPlayerMove()
+    {
+        state=BattleState.Busy;
+
+        //技を決定
+        Move move = playerUnit.Pokemon.Moves[currentMove];//現在選択してる技
+         yield return dialogBox.TypeDialog($" {playerUnit.Pokemon.Base.Name} は{move.Base.Name}をつかった");
+         yield return new WaitForSeconds(1); //1秒まつ
+
+         //ダメージ計算 //ダメージを受けるのはポケモンだからPokemonクラスで実行したいものを記入
+         bool isFainted=enemyUnit.Pokemon.TakeDamage(move,playerUnit.Pokemon); //faintedは気絶の意味
+         //HP反映
+         enemyHud.UpdateHP();
+
+
+         //戦闘不能ならメッセージ
+
+         if (isFainted)
+         {
+            yield return dialogBox.TypeDialog($" {playerUnit.Pokemon.Base.Name} は戦闘不能");
+         }
+         //戦闘可能ならEnemyMove
+         else
+         {
+
+         }
+    }
+
+    
+
     private void Update()
     {
         if (state == BattleState.PlayerAction)
@@ -117,6 +149,19 @@ public class BattleSystem : MonoBehaviour
             }
         }
         dialogBox.UpdateMoveSelection(currentMove, playerUnit.Pokemon.Moves[currentMove]);
+
+        if(Input.GetKeyDown(KeyCode.Z))//zボタンをおすと
+        {
+            //技決定
+            //技選択のUIは非表示
+            dialogBox.EnableMoveSelector(false); //非表示だからFalse
+            //メッセージ復活
+            dialogBox.EnableMoveSelector(true); //表示だからtrue
+        //技決定の処理
+
+            StartCoroutine(PerformPlayerMove());
+
+        }
     }
 }
 

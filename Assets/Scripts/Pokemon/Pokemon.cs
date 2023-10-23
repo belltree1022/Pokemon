@@ -4,22 +4,22 @@ using UnityEngine;
 using static PokemonBase;
 
 
-//ƒŒƒxƒ‹‚É‰‚¶‚½ƒXƒe[ƒ^ƒX‚Ìˆá‚¤ƒ‚ƒ“ƒXƒ^[‚ğ¶¬‚·‚éƒNƒ‰ƒX
-//’ˆÓ@ƒf[ƒ^‚Ì‚İˆµ‚¤
+//ï¿½ï¿½ï¿½xï¿½ï¿½ï¿½É‰ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½eï¿½[ï¿½^ï¿½Xï¿½Ìˆá‚¤ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½^ï¿½[ï¿½ğ¶ï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½X
+//ï¿½ï¿½ï¿½Ó@ï¿½fï¿½[ï¿½^ï¿½Ì‚İˆï¿½ï¿½ï¿½
 public class Pokemon
 {
-    //ƒx[ƒX‚Æ‚È‚éƒf[ƒ^
+    //ï¿½xï¿½[ï¿½Xï¿½Æ‚È‚ï¿½fï¿½[ï¿½^
    public PokemonBase Base { get; set; }
    public int Level { get; set; }
 
 
     public int HP { get; set; }
 
-    //g‚¦‚é‹Z
+    //ï¿½gï¿½ï¿½ï¿½ï¿½Z
     public List<Move> Moves { get; set; }
 
 
-    //ƒRƒ“ƒXƒgƒ‰ƒNƒ^[@¶¬‚Ì‰Šúİ’è
+    //ï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^ï¿½[ï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½İ’ï¿½
     public Pokemon(PokemonBase pBase, int pLevel)
     {
         Base = pBase;
@@ -29,15 +29,15 @@ public class Pokemon
         Moves = new List<Move>();
 
 
-        //g‚¦‚é‹Z‚Ìİ’è:Šo‚¦‚é‹Z‚ÌƒŒƒxƒ‹ˆÈã‚È‚çMoves‚É’Ç‰Á
+        //ï¿½gï¿½ï¿½ï¿½ï¿½Zï¿½Ìİ’ï¿½:ï¿½oï¿½ï¿½ï¿½ï¿½Zï¿½Ìƒï¿½ï¿½xï¿½ï¿½ï¿½Èï¿½È‚ï¿½Movesï¿½É’Ç‰ï¿½
         foreach (LearnableMove learnableMove in pBase.LearnableMoves)
         {
             if (Level >=learnableMove.Level)
             {
-                //‹Z‚ğŠo‚¦‚é
+                //ï¿½Zï¿½ï¿½ï¿½oï¿½ï¿½ï¿½ï¿½
                 Moves.Add(new Move(learnableMove.Base));
             }
-            //4‚ÂˆÈã‚Ì‹Z‚Íg‚¦‚È‚¢
+            //4ï¿½ÂˆÈï¿½Ì‹Zï¿½Ígï¿½ï¿½ï¿½È‚ï¿½
 
 
 
@@ -49,10 +49,10 @@ public class Pokemon
             }
         }
     }
-    //level‚É‰‚¶‚½ƒXƒe[ƒ^ƒX‚ğ•Ô‚·‚à‚ÌFƒvƒƒpƒeƒBi+ˆ—‚ğ‰Á‚¦‚é‚±‚Æ‚ª‚Å‚«‚éj
-    //ŠÖ”ƒo[ƒWƒ‡ƒ“
+    //levelï¿½É‰ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½eï¿½[ï¿½^ï¿½Xï¿½ï¿½Ô‚ï¿½ï¿½ï¿½ï¿½ÌFï¿½vï¿½ï¿½ï¿½pï¿½eï¿½Bï¿½i+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½é‚±ï¿½Æ‚ï¿½ï¿½Å‚ï¿½ï¿½ï¿½j
+    //ï¿½Öï¿½ï¿½oï¿½[ï¿½Wï¿½ï¿½ï¿½ï¿½
 
-    //ƒvƒƒpƒeƒB
+    //ï¿½vï¿½ï¿½ï¿½pï¿½eï¿½B
 
     public int Attack
     {
@@ -94,5 +94,21 @@ public int MaxHp
         {
             return Mathf.FloorToInt((Base.MaxHP * Level) / 100f) + 10;
         }
+    }
+    public bool TakeDamage(Move move,Pokemon attacker)
+    {
+        float modififers = Random.Range(0.85f,1f);//ãƒ€ãƒ¡ãƒ¼ã‚¸ãŒï¼‘ï¼ï¼ï¼…ãªã®ã‹ï¼˜ï¼•ï¼…ãªã®ã‹
+        float a = (2*attacker.Level+10)/250f; //ãƒ¬ãƒ™ãƒ«ã«å¿œã˜ã¦ãƒ€ãƒ¡ãƒ¼ã‚¸å¤‰åŒ–
+        float d = a*move.Base.Power*((float)attacker.Attack/Defense)+2;//æŠ€ã®å¨åŠ›ã«ãƒ¬ãƒ™ãƒ«ãŒä¾å­˜
+        int damage=Mathf.FloorToInt(d*modififers);//ãƒ€ãƒ¡ãƒ¼ã‚¸è¨ˆç®— FloorToIntã¯å°æ•°ç‚¹ä»¥ä¸‹åˆ‡ã‚Šæ¨ã¦
+
+        HP -= damage;
+        if (HP <=0) //ã‚‚ã—HPãŒï¼ä»¥ä¸‹ãªã‚‰ï¼ã«ã—ã¾ã—ã‚‡ã†
+        {
+            HP=0;
+            return true;
+        }
+
+        return false;//ãã†ã§ãªã‘ã‚Œã‚ã€æ®‹ã‚Šã®HPã§å¤§ä¸ˆå¤«
     }
 }
