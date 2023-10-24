@@ -51,33 +51,27 @@ public class BattleSystem : MonoBehaviour
 
     //PlayerMoveの実行
     IEnumerator PerformPlayerMove()
+{
+    state = BattleState.Busy;
+    // 技を決定
+    Move move = playerUnit.Pokemon.Moves[currentMove];
+    Debug.Log("Hello");
+    yield return dialogBox.TypeDialog($" {playerUnit.Pokemon.Base.Name} は {move.Base.Name} を使った");
+    yield return new WaitForSeconds(1);
+    // ダメージ計算
+    bool isFainted = enemyUnit.Pokemon.TakeDamage(move, playerUnit.Pokemon);
+    // HP反映
+    enemyHud.UpdateHP();
+    if (isFainted)
     {
-        state=BattleState.Busy;
-
-        //技を決定
-        Move move = playerUnit.Pokemon.Moves[currentMove];//現在選択してる技
-         yield return dialogBox.TypeDialog($" {playerUnit.Pokemon.Base.Name} は{move.Base.Name}をつかった");
-         yield return new WaitForSeconds(1); //1秒まつ
-
-         //ダメージ計算 //ダメージを受けるのはポケモンだからPokemonクラスで実行したいものを記入
-         bool isFainted=enemyUnit.Pokemon.TakeDamage(move,playerUnit.Pokemon); //faintedは気絶の意味
-         //HP反映
-         enemyHud.UpdateHP();
-
-
-         //戦闘不能ならメッセージ
-
-         if (isFainted)
-         {
-            yield return dialogBox.TypeDialog($" {playerUnit.Pokemon.Base.Name} は戦闘不能");
-         }
-         //戦闘可能ならEnemyMove
-         else
-         {
-
-         }
+        yield return dialogBox.TypeDialog($"{enemyUnit.Pokemon.Base.Name} は戦闘不能になった！");
+        // 戦闘終了の処理を追加するか、次のステップに進むかを決めるロジックをここに追加
     }
-
+    else
+    {
+        // 敵の行動（EnemyMove）または次のプレイヤーの行動（PlayerAction）に進むロジックをここに追加
+    }
+}
     
 
     private void Update()
@@ -158,7 +152,7 @@ public class BattleSystem : MonoBehaviour
             //メッセージ復活
             dialogBox.EnableMoveSelector(true); //表示だからtrue
         //技決定の処理
-
+            Debug.Log("genchan");
             StartCoroutine(PerformPlayerMove());
 
         }
