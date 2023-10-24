@@ -70,9 +70,34 @@ public class BattleSystem : MonoBehaviour
     else
     {
         // 敵の行動（EnemyMove）または次のプレイヤーの行動（PlayerAction）に進むロジックをここに追加
+        //EnemyMoveを追加
+        StartCoroutine(EnemyMove());
     }
 }
-    
+IEnumerator EnemyMove()
+{
+     state = BattleState.EnemyMove;
+    // 技を決定:ランダムになる　敵の行動
+    Move move = enemyUnit.Pokemon.GetRandomMove();
+    Debug.Log("Hello");
+    yield return dialogBox.TypeDialog($" {enemyUnit.Pokemon.Base.Name} は {move.Base.Name} を使った");
+    yield return new WaitForSeconds(1);
+    // ダメージ計算
+    bool isFainted = playerUnit.Pokemon.TakeDamage(move, enemyUnit.Pokemon);//プレイヤーがダメージを受けて、敵がダメージを与えるからTakeDmageの中はenemyUnit
+    // HP反映
+    yield return playerHud.UpdateHP();//プレイヤーがダメージを受けるからPlayerHud
+    if (isFainted)
+    {
+        yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.Name} は戦闘不能になった！");
+        // 戦闘終了の処理を追加するか、次のステップに進むかを決めるロジックをここに追加
+    }
+    else
+    {
+        // それ以外ならプレイヤーのターンだからPlayerActionをかえす
+        PlayerAction();
+    }
+
+} 
 
     private void Update()
     {

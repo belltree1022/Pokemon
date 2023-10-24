@@ -111,4 +111,15 @@ public int MaxHp
 
         return false;//そうでなけれあ、残りのHPで大丈夫
     }
+
+    public Move GetRandomMove()
+    {
+        if (Moves.Count==0){
+
+            return null;
+        }
+
+        int r = Random.Range(0,Moves.Count);//どんな技がくるのか
+        return Moves[r];//Movesの中からランダムで選ぶ
+    }
 }
