@@ -23,9 +23,11 @@ public class BattleHud : MonoBehaviour
 
     }
 
-    public void UpdateHP() //HPを反映ダメージ計算
+    public IEnumerator UpdateHP() //HPを反映ダメージ計算,関数内でYield（コルーチンを使用する）状態でVOidにするとエラーがおきるので、IEnumeratorを使用
     {
-        hpbar.SetHP((float)_pokemon.HP/_pokemon.MaxHp);
+
+        
+        yield return hpbar.SetHPSmooth((float)_pokemon.HP/_pokemon.MaxHp);
 
     }
 }

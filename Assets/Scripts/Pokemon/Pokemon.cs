@@ -116,7 +116,7 @@ public int MaxHp
     {
         if (Moves.Count==0){
 
-            return null;
+            return null; //技が１つも入っていない場合、何も返さない
         }
 
         int r = Random.Range(0,Moves.Count);//どんな技がくるのか

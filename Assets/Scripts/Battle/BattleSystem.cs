@@ -61,7 +61,7 @@ public class BattleSystem : MonoBehaviour
     // ダメージ計算
     bool isFainted = enemyUnit.Pokemon.TakeDamage(move, playerUnit.Pokemon);
     // HP反映
-    enemyHud.UpdateHP();
+    yield return enemyHud.UpdateHP();
     if (isFainted)
     {
         yield return dialogBox.TypeDialog($"{enemyUnit.Pokemon.Base.Name} は戦闘不能になった！");
