@@ -39,7 +39,7 @@ public class BattleSystem : MonoBehaviour
     {
         state = BattleState.PlayerAction; // Update the battle state
         dialogBox.EnableActionSelector(true);
-        StartCoroutine(dialogBox.TypeDialog("Choose an action"));
+        StartCoroutine(dialogBox.TypeDialog("どうする"));
     }
     void PlayerMove()
     {
@@ -150,7 +150,7 @@ public class BattleSystem : MonoBehaviour
             //技選択のUIは非表示
             dialogBox.EnableMoveSelector(false); //非表示だからFalse
             //メッセージ復活
-            dialogBox.EnableMoveSelector(true); //表示だからtrue
+            dialogBox.EnableDialogText(true); //表示だからtrue
         //技決定の処理
             Debug.Log("genchan");
             StartCoroutine(PerformPlayerMove());
