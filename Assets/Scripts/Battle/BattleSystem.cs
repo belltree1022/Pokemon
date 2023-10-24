@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 public enum BattleState
 {
     Start,
@@ -32,7 +33,7 @@ public class BattleSystem : MonoBehaviour
         enemyHud.SetData(enemyUnit.Pokemon);
         dialogBox.SetMovenames(playerUnit.Pokemon.Moves);
         yield return dialogBox.TypeDialog($"やせいの {enemyUnit.Pokemon.Base.Name} があらわれた");
-        yield return new WaitForSeconds(1);
+        
         PlayerAction();
     }
     void PlayerAction()
@@ -57,12 +58,13 @@ public class BattleSystem : MonoBehaviour
     Move move = playerUnit.Pokemon.Moves[currentMove];
     Debug.Log("Hello");
     yield return dialogBox.TypeDialog($" {playerUnit.Pokemon.Base.Name} は {move.Base.Name} を使った");
-    yield return new WaitForSeconds(1);
+    
     // ダメージ計算
-    bool isFainted = enemyUnit.Pokemon.TakeDamage(move, playerUnit.Pokemon);
+    DamageDetails damageDetails = enemyUnit.Pokemon.TakeDamage(move, playerUnit.Pokemon);
     // HP反映
     yield return enemyHud.UpdateHP();
-    if (isFainted)
+    yield return ShowDamageDetails(damageDetails);
+    if (damageDetails.Fainted)
     {
         yield return dialogBox.TypeDialog($"{enemyUnit.Pokemon.Base.Name} は戦闘不能になった！");
         // 戦闘終了の処理を追加するか、次のステップに進むかを決めるロジックをここに追加
@@ -81,12 +83,14 @@ IEnumerator EnemyMove()
     Move move = enemyUnit.Pokemon.GetRandomMove();
     Debug.Log("Hello");
     yield return dialogBox.TypeDialog($" {enemyUnit.Pokemon.Base.Name} は {move.Base.Name} を使った");
-    yield return new WaitForSeconds(1);
+    
     // ダメージ計算
-    bool isFainted = playerUnit.Pokemon.TakeDamage(move, enemyUnit.Pokemon);//プレイヤーがダメージを受けて、敵がダメージを与えるからTakeDmageの中はenemyUnit
+    DamageDetails damageDetails = playerUnit.Pokemon.TakeDamage(move, enemyUnit.Pokemon);//プレイヤーがダメージを受けて、敵がダメージを与えるからTakeDmageの中はenemyUnit
     // HP反映
     yield return playerHud.UpdateHP();//プレイヤーがダメージを受けるからPlayerHud
-    if (isFainted)
+    //相性/クリティカルのメッセージ
+    yield return ShowDamageDetails(damageDetails);
+    if (damageDetails.Fainted)
     {
         yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.Name} は戦闘不能になった！");
         // 戦闘終了の処理を追加するか、次のステップに進むかを決めるロジックをここに追加
@@ -98,6 +102,26 @@ IEnumerator EnemyMove()
     }
 
 } 
+
+IEnumerator ShowDamageDetails(DamageDetails damageDetails)//タイプや状態によって出てくる文字がかわる
+{
+
+    if (damageDetails.Critical>1f)
+    {
+        yield return dialogBox.TypeDialog($"きゅうしょにあたった!");
+    }
+    
+    if (damageDetails.TypeEffectiveness>1f)
+    {
+        yield return dialogBox.TypeDialog($"こうかはばつぐんだ！");
+    }
+    else if (damageDetails.TypeEffectiveness<1f)
+    {
+        yield return dialogBox.TypeDialog($"こうかはいまひとつだ...");
+    }
+     
+      
+}
 
     private void Update()
     {

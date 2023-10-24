@@ -1,21 +1,21 @@
 using System.Net.Mime;
-using System.Collections;@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static PokemonBase;//ƒ|ƒPƒ‚ƒ“ƒx[ƒX‚©‚çƒ|ƒPƒ‚ƒ“ƒ^ƒCƒv‚ðŽ‚Á‚Ä‚­‚é
+using static PokemonBase;//ï¿½|ï¿½Pï¿½ï¿½ï¿½ï¿½ï¿½xï¿½[ï¿½Xï¿½ï¿½ï¿½ï¿½|ï¿½Pï¿½ï¿½ï¿½ï¿½ï¿½^ï¿½Cï¿½vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½
 
 [CreateAssetMenu]
 public class MoveBase : ScriptableObject
 {
-    // –¼‘O, Ú×, ƒ^ƒCƒv, ˆÐ—Í, ³Šm«, PP(‹Z‚ðŽg‚¤‚Æ‚«‚ÉÁ”ï‚·‚éƒ|ƒCƒ“ƒg)
-    [SerializeField] string name;@//‹Z–¼‚ð’è‹`‚µ‚ÄƒCƒ“ƒXƒyƒNƒ^[‚É’Ç‰Á
+    // ï¿½ï¿½ï¿½O, ï¿½Úï¿½, ï¿½^ï¿½Cï¿½v, ï¿½Ð—ï¿½, ï¿½ï¿½ï¿½mï¿½ï¿½, PP(ï¿½Zï¿½ï¿½ï¿½gï¿½ï¿½ï¿½Æ‚ï¿½ï¿½Éï¿½ï¿½ï‚·ï¿½ï¿½|ï¿½Cï¿½ï¿½ï¿½g)
+    [SerializeField] string name;//ï¿½Zï¿½ï¿½ï¿½ï¿½ï¿½`ï¿½ï¿½ï¿½ÄƒCï¿½ï¿½ï¿½Xï¿½yï¿½Nï¿½^ï¿½[ï¿½É’Ç‰ï¿½
     [TextArea]
-    [SerializeField] string description;//‹Z‚Ìà–¾‚ðƒCƒ“ƒXƒyƒNƒ^[‚É’Ç‰Á
-    [SerializeField] PokemonType type;//‹Z‚Ìƒ^ƒCƒv‚ð‘I‘ð‚Å‚«‚éƒCƒ“ƒXƒyƒNƒ^[‚É’Ç‰Á
-    [SerializeField] int power;//‹Z‚ÌUŒ‚—Í‚ðƒCƒ“ƒXƒyƒNƒ^[‚É’Ç‰Á
-    [SerializeField] int accuracy;//‹Z‚Ì–½’†—¦‚ðƒCƒ“ƒXƒyƒNƒ^[‚É’Ç‰Á
-    [SerializeField] int pp;//‹Z‚ÌŽg—p‚Å‚«‚é”‚ðƒCƒ“ƒXƒyƒNƒ^[‚É’Ç‰Á
-    // ‘¼‚Ìƒtƒ@ƒCƒ‹‚©‚çŽQÆ‚·‚é‚½‚ß‚ÉƒvƒƒpƒeƒB‚ðŽg‚¤
+    [SerializeField] string description;//ï¿½Zï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Xï¿½yï¿½Nï¿½^ï¿½[ï¿½É’Ç‰ï¿½
+    [SerializeField] PokemonType type;//ï¿½Zï¿½Ìƒ^ï¿½Cï¿½vï¿½ï¿½Iï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Xï¿½yï¿½Nï¿½^ï¿½[ï¿½É’Ç‰ï¿½
+    [SerializeField] int power;//ï¿½Zï¿½ÌUï¿½ï¿½ï¿½Í‚ï¿½ï¿½Cï¿½ï¿½ï¿½Xï¿½yï¿½Nï¿½^ï¿½[ï¿½É’Ç‰ï¿½
+    [SerializeField] int accuracy;//ï¿½Zï¿½Ì–ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Xï¿½yï¿½Nï¿½^ï¿½[ï¿½É’Ç‰ï¿½
+    [SerializeField] int pp;//ï¿½Zï¿½ÌŽgï¿½pï¿½Å‚ï¿½ï¿½é”ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Xï¿½yï¿½Nï¿½^ï¿½[ï¿½É’Ç‰ï¿½
+    // ï¿½ï¿½ï¿½Ìƒtï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Qï¿½Æ‚ï¿½ï¿½é‚½ï¿½ß‚Éƒvï¿½ï¿½ï¿½pï¿½eï¿½Bï¿½ï¿½ï¿½gï¿½ï¿½
     public string Name { get => name; }
     public string Description { get => description; }
     public PokemonType Type { get => type; }

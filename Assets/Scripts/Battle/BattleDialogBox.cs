@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
+using static PokemonBase;
 public class BattleDialogBox : MonoBehaviour
 {
 
@@ -36,6 +37,8 @@ public class BattleDialogBox : MonoBehaviour
             dialogText.text += letter;
             yield return new WaitForSeconds(1f / letterPerSecond);
         }
+
+        yield return new WaitForSeconds(0.7f); //1•b‘Ò‹@
     }
 
     //UI??¿½?¿½Ì•\??¿½?¿½??¿½?¿½
@@ -121,3 +124,5 @@ public class BattleDialogBox : MonoBehaviour
         }
     }
 }
+
+

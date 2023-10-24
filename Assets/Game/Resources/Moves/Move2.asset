@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c9b3e157da47204882d4eb785369600, type: 3}
   m_Name: Move2
   m_EditorClassIdentifier: 
-  name: "\u30BF\u30C3\u30AF\u30EB"
+  name: "\u30EA\u30FC\u30D5\u30D1\u30F3\u30C1"
   description: "\u5F37\u3044\u305E\n"
-  type: 7
-  power: 80
+  type: 5
+  power: 60
   accuracy: 100
   pp: 9

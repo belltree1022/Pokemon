@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using static PokemonBase;
 
@@ -95,9 +96,40 @@ public int MaxHp
             return Mathf.FloorToInt((Base.MaxHP * Level) / 100f) + 10;
         }
     }
-    public bool TakeDamage(Move move,Pokemon attacker)
+
+
+
+
+
+
+
+
+
+
+    public DamageDetails  TakeDamage(Move move,Pokemon attacker)
     {
-        float modififers = Random.Range(0.85f,1f);//ダメージが１００％なのか８５％なのか
+
+        //クリティカル　急所攻撃
+        float critical =1f;
+        //6.25%の攻撃で急所攻撃
+        if (Random.value*100<=6.25f)
+        {
+            critical=2f;
+        }
+
+        //タイプの相性 
+        float type =TypeChart.GetEffectivenss(move.Base.Type,Base.Type1)*TypeChart.GetEffectivenss(move.Base.Type,Base.Type2) ;
+        DamageDetails damageDetails = new DamageDetails
+
+        {
+            Fainted =false,//戦闘不能化
+            Critical=critical,//きゅうしょか
+            TypeEffectiveness=type//タイプ
+        };
+        float modififers = Random.Range(0.85f,1f)*type*critical
+        
+        
+        ;//ダメージが１００％なのか８５％なのか,タイプの相性も追加
         float a = (2*attacker.Level+10)/250f; //レベルに応じてダメージ変化
         float d = a*move.Base.Power*((float)attacker.Attack/Defense)+2;//技の威力にレベルが依存
         int damage=Mathf.FloorToInt(d*modififers);//ダメージ計算 FloorToIntは小数点以下切り捨て
@@ -106,20 +138,23 @@ public int MaxHp
         if (HP <=0) //もしHPが０以下なら０にしましょう
         {
             HP=0;
-            return true;
+            damageDetails.Fainted=true; //戦闘不能になったらTrue
         }
 
-        return false;//そうでなけれあ、残りのHPで大丈夫
+        return damageDetails;//そうでなけれあ、残りのHPで大丈夫
     }
 
     public Move GetRandomMove()
     {
-        if (Moves.Count==0){
-
-            return null; //技が１つも入っていない場合、何も返さない
-        }
-
+    
         int r = Random.Range(0,Moves.Count);//どんな技がくるのか
         return Moves[r];//Movesの中からランダムで選ぶ
     }
+}
+
+public class DamageDetails 
+{
+    public bool Fainted {get;set;}//戦闘不能かどうか
+    public float Critical {get;set;}
+    public float TypeEffectiveness {get;set;}
 }

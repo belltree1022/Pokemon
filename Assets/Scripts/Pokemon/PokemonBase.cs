@@ -3,38 +3,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// ƒ|ƒPƒ‚ƒ“‚Ìƒ}ƒXƒ^[ƒf[ƒ^FŠO•”‚©‚ç•ÏX‚µ‚È‚¢iƒCƒ“ƒXƒyƒNƒ^[‚¾‚¯•ÏX‰Â”\j
+// ï¿½|ï¿½Pï¿½ï¿½ï¿½ï¿½ï¿½Ìƒ}ï¿½Xï¿½^ï¿½[ï¿½fï¿½[ï¿½^ï¿½Fï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÏXï¿½ï¿½ï¿½È‚ï¿½ï¿½iï¿½Cï¿½ï¿½ï¿½Xï¿½yï¿½Nï¿½^ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ÏXï¿½Â”\ï¿½j
 [CreateAssetMenu]
 public class PokemonBase : ScriptableObject
 {
-    // –¼‘O,à–¾,‰æ‘œ,ƒ^ƒCƒv,ƒXƒe[ƒ^ƒX
+    // ï¿½ï¿½ï¿½O,ï¿½ï¿½ï¿½ï¿½,ï¿½æ‘œ,ï¿½^ï¿½Cï¿½v,ï¿½Xï¿½eï¿½[ï¿½^ï¿½X
 
-    [SerializeField] new string name;//ƒ|ƒPƒ‚ƒ“‚Ì–¼‘O‚ğ’è‹`
+    [SerializeField] new string name;//ï¿½|ï¿½Pï¿½ï¿½ï¿½ï¿½ï¿½Ì–ï¿½ï¿½Oï¿½ï¿½ï¿½`
     [TextArea]
-    [SerializeField] string description;//ƒ|ƒPƒ‚ƒ“‚Ìà–¾
+    [SerializeField] string description;//ï¿½|ï¿½Pï¿½ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½
 
-    // ‰æ‘œ
-    [SerializeField] Sprite frontSprite;//ƒ|ƒPƒ‚ƒ“‚Ì‘O‰æ‘œ
-    [SerializeField] Sprite backSprite;//Œã‚ë‰æ‘œ
+    // ï¿½æ‘œ
+    [SerializeField] Sprite frontSprite;//ï¿½|ï¿½Pï¿½ï¿½ï¿½ï¿½ï¿½Ì‘Oï¿½æ‘œ
+    [SerializeField] Sprite backSprite;//ï¿½ï¿½ï¿½æ‘œ
 
-    // ƒ^ƒCƒv
-    [SerializeField] PokemonType type1;//ƒ^ƒCƒv1‚ğƒCƒ“ƒXƒyƒNƒ^[‚É’Ç‰Á
-    [SerializeField] PokemonType type2;//ƒ^ƒCƒv‚Q‚ğƒCƒ“ƒXƒyƒNƒ^[‚É’Ç‰Á
+    // ï¿½^ï¿½Cï¿½v
+    [SerializeField] PokemonType type1;//ï¿½^ï¿½Cï¿½v1ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Xï¿½yï¿½Nï¿½^ï¿½[ï¿½É’Ç‰ï¿½
+    [SerializeField] PokemonType type2;//ï¿½^ï¿½Cï¿½vï¿½Qï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Xï¿½yï¿½Nï¿½^ï¿½[ï¿½É’Ç‰ï¿½
 
-    // ƒXƒe[ƒ^ƒX:hp,at,df,sAT,sDF,sp
-    [SerializeField] int maxHP;//ƒ|ƒPƒ‚ƒ“‚ÌHP‚ğ’è‹`‚µ‚ÄƒCƒ“ƒXƒyƒNƒ^[‚É’Ç‰Á
-    [SerializeField] int attack;//ƒ|ƒPƒ‚ƒ“‚ÌUŒ‚—Í‚ğ’è‹`‚µ‚ÄƒCƒ“ƒXƒyƒNƒ^[‚É’Ç‰Á
-    [SerializeField] int defense;//ƒ|ƒPƒ‚ƒ“‚Ì–hŒä—Í‚ğ’è‹`‚µ‚ÄƒCƒ“ƒXƒyƒNƒ^[‚É’Ç‰Á
-    [SerializeField] int spAttack;//ƒ|ƒPƒ‚ƒ“‚Ì“ÁU‚ğ’è‹`
-    [SerializeField] int spDefense;//“Á–h‚ğ’è‹`‚µ‚ÄƒCƒ“ƒXƒyƒNƒ^[‚É’Ç‰Á
+    // ï¿½Xï¿½eï¿½[ï¿½^ï¿½X:hp,at,df,sAT,sDF,sp
+    [SerializeField] int maxHP;//ï¿½|ï¿½Pï¿½ï¿½ï¿½ï¿½ï¿½ï¿½HPï¿½ï¿½ï¿½`ï¿½ï¿½ï¿½ÄƒCï¿½ï¿½ï¿½Xï¿½yï¿½Nï¿½^ï¿½[ï¿½É’Ç‰ï¿½
+    [SerializeField] int attack;//ï¿½|ï¿½Pï¿½ï¿½ï¿½ï¿½ï¿½ÌUï¿½ï¿½ï¿½Í‚ï¿½ï¿½`ï¿½ï¿½ï¿½ÄƒCï¿½ï¿½ï¿½Xï¿½yï¿½Nï¿½^ï¿½[ï¿½É’Ç‰ï¿½
+    [SerializeField] int defense;//ï¿½|ï¿½Pï¿½ï¿½ï¿½ï¿½ï¿½Ì–hï¿½ï¿½Í‚ï¿½ï¿½`ï¿½ï¿½ï¿½ÄƒCï¿½ï¿½ï¿½Xï¿½yï¿½Nï¿½^ï¿½[ï¿½É’Ç‰ï¿½
+    [SerializeField] int spAttack;//ï¿½|ï¿½Pï¿½ï¿½ï¿½ï¿½ï¿½Ì“ï¿½ï¿½Uï¿½ï¿½ï¿½`
+    [SerializeField] int spDefense;//ï¿½ï¿½ï¿½hï¿½ï¿½ï¿½`ï¿½ï¿½ï¿½ÄƒCï¿½ï¿½ï¿½Xï¿½yï¿½Nï¿½^ï¿½[ï¿½É’Ç‰ï¿½
     /// </summary>
-    [SerializeField] int speed;//‚·‚Î‚â‚³‚ğ’è‹`‚µ‚ÄƒCƒ“ƒXƒyƒNƒ^[‚É’Ç‰Á
+    [SerializeField] int speed;//ï¿½ï¿½ï¿½Î‚â‚³ï¿½ï¿½ï¿½`ï¿½ï¿½ï¿½ÄƒCï¿½ï¿½ï¿½Xï¿½yï¿½Nï¿½^ï¿½[ï¿½É’Ç‰ï¿½
 
-    // Šo‚¦‚é‹Zˆê——
+    // ï¿½oï¿½ï¿½ï¿½ï¿½Zï¿½ê——
     [SerializeField] List<LearnableMove> learnableMoves;
 
 
-    // ‘¼ƒtƒ@ƒCƒ‹‚©‚çattack‚Ì’l‚Ìæ“¾‚Í‚Å‚«‚é‚ª•ÏX‚Í‚Å‚«‚È‚¢
+    // ï¿½ï¿½ï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½ï¿½attackï¿½Ì’lï¿½Ìæ“¾ï¿½Í‚Å‚ï¿½ï¿½é‚ªï¿½ÏXï¿½Í‚Å‚ï¿½ï¿½È‚ï¿½
     public int Attack { get => attack; }
     public int Defense { get => defense; }
     public int SpAttack { get => spAttack; }
@@ -52,21 +52,21 @@ public class PokemonBase : ScriptableObject
    
 
 
-    // Šo‚¦‚é‹ZƒNƒ‰ƒXF‚Ç‚ÌƒŒƒxƒ‹‚Å‰½‚ğŠo‚¦‚é‚Ì‚©
+    // ï¿½oï¿½ï¿½ï¿½ï¿½Zï¿½Nï¿½ï¿½ï¿½Xï¿½Fï¿½Ç‚Ìƒï¿½ï¿½xï¿½ï¿½ï¿½Å‰ï¿½ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½ï¿½Ì‚ï¿½
     [Serializable]
     public class LearnableMove
     {
-        // ƒqƒGƒ‰ƒ‹ƒL[‚Åİ’è‚·‚é
+        // ï¿½qï¿½Gï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½[ï¿½Åİ’è‚·ï¿½ï¿½
         [SerializeField] MoveBase _base;
-        [SerializeField] int level;//ƒŒƒxƒ‹‚Ì’è‹`
+        [SerializeField] int level;//ï¿½ï¿½ï¿½xï¿½ï¿½ï¿½Ì’ï¿½`
 
         public MoveBase Base { get => _base; }
         public int Level { get => level; }
     }
 
-    public enum PokemonType //ƒ|ƒPƒ‚ƒ“‚Ìƒ^ƒCƒvˆê——
+    public enum PokemonType //ï¿½|ï¿½Pï¿½ï¿½ï¿½ï¿½ï¿½Ìƒ^ï¿½Cï¿½vï¿½ê——
     {
-        None,//‚È‚µ
+        None,//ï¿½È‚ï¿½
         Normal,
         Fire,
         Water,
@@ -82,4 +82,36 @@ public class PokemonBase : ScriptableObject
         Ghost,
         Dragon,
     }
+    public class TypeChart
+{
+    //ã©ã“ã‹ã‚‰ã§ã‚‚ã‚¢ã‚¯ã‚»ã‚¹ã§ãã‚‹ã‚ˆã†ã«static
+    static float[][] chart=
+    {//2æ¬¡å…ƒåˆ¤å®šã®ä½œæˆ
+         //æ”»æ’ƒã€é˜²å¾¡         Normal,Fire,Water,Electrlic,Grass,Ice,Fight,Poison   
+        /*normal*/new float[]{1f,1f,1f,1f,1f,1f,1f,1f},
+        /*Fire*/new float[]{1f,0.5f,0.5f,1f,2f,2f,1f,1f},
+        /*Water*/new float[]{1f,2f,0.5f,1f,0.5f,1f,1f,1f},
+         /*elec*/new float[]{1f,1f,2f,0.5f,0.5f,1f,1f,1f},
+        /*Grass*/new float[]{1f,0.5f,2f,1f,0.5f,1f,1f,0.5f},
+        /*Ice*/new float[]{1f,0.5f,0.5f,1f,2f,0.5f,1f,1f},
+         /*Fight*/new float[]{2f,1f,1f,1f,1f,2f,1f,0.5f},
+        /*Poison*/new float[]{1f,1f,1f,1f,2f,1f,1f,0.5f},
+        
+    };
+
+    public static float GetEffectivenss(PokemonType attackType,PokemonType defenseType)//PokemonTypeãŒè¡¨ç¤ºã•ã‚Œãªã‹ã£ãŸãŒã€å‰ã«èµ·ããŸã‚¨ãƒ©ãƒ¼ã¨åŒã˜ã‚ˆã†ã«using static PokemonBase;ã¨å…¥ã‚ŒãŸã‚‰è§£æ±ºã§ããŸ
+    {
+        if (attackType==PokemonType.None || defenseType==PokemonType.None)
+        {
+            return 1f; //ä½•ã‚‚ãªã„å ´åˆã¯å€ç‡ã¯ãã®ã¾ã¾
+        }
+
+
+
+        int row=(int)attackType-1;//-1ã™ã‚‹ã®ã¯ãªã‚“ã§ã‚‚ãªã„ã¨ã„ã†ã‚¿ã‚¤ãƒ—ã‚’çœããŸã„ãŸã‚
+        int col=(int)defenseType-1;
+        return chart[row][col];
+
+    }
+}
 }
