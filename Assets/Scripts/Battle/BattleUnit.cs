@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using DG.Tweening;
 
 public class BattleUnit : MonoBehaviour
 {
@@ -54,11 +54,9 @@ public class BattleUnit : MonoBehaviour
         {
             //右端に配置
             transform.localPosition=new Vector3(1200,originalPos.y);
-
-
         }
-        //戦闘時の位置までアニメーション
-      
+        transform.DOLocalMoveX(originalPos.x,1.0f);
+        //戦闘時の位置までアニメーショ
 
     }
 }
