@@ -6,20 +6,29 @@ using UnityEngine.UI;
 
 public class BattleUnit : MonoBehaviour
 {
-    [SerializeField] PokemonBase _base;//í‚í‚¹‚éƒ‚ƒ“ƒXƒ^[İ’è
+    [SerializeField] PokemonBase _base;//ï¿½ï¿½í‚¹ï¿½éƒ‚ï¿½ï¿½ï¿½Xï¿½^ï¿½[ï¿½İ’ï¿½
     [SerializeField] int level;
-    [SerializeField] bool isPlayerUnit; //·•Ê‰»
+    [SerializeField] bool isPlayerUnit; //ï¿½ï¿½ï¿½Ê‰ï¿½
 
 
     public Pokemon Pokemon { get; set; }
-    //ƒoƒgƒ‹‚Åg‚¤ƒ‚ƒ“ƒXƒ^[•Û
-    //ƒ‚ƒ“ƒXƒ^[‚Ì‰æ‘œ‚ğ”½‰f‚·‚é
+    //ï¿½oï¿½gï¿½ï¿½ï¿½Ågï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½^ï¿½[ï¿½Ûï¿½
+    //ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½^ï¿½[ï¿½Ì‰æ‘œï¿½ğ”½‰fï¿½ï¿½ï¿½ï¿½
+
+
+    //æœ€åˆã®ä½ç½®ã€€ã‚ªãƒªã‚¸ãƒŠãƒ«ãƒã‚¸ã‚·ãƒ§ãƒ³
+    Vector3 originalPos;
+
+    private void Awake()
+    {
+        originalPos=transform.localPosition;
+    }
 
 
     public void Setup()
     {
-        //_ƒx[ƒX‚©‚çƒŒƒxƒ‹‚É‰‚¶‚½ƒ‚ƒ“ƒXƒ^[‚ğ¶¬
-        //battelesysytem‚Åg‚¤‚©‚çƒvƒƒpƒeƒB“ü‚ê‚é
+        //_ï¿½xï¿½[ï¿½Xï¿½ï¿½ï¿½çƒŒï¿½xï¿½ï¿½ï¿½É‰ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½^ï¿½[ï¿½ğ¶ï¿½
+        //battelesysytemï¿½Ågï¿½ï¿½ï¿½ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½pï¿½eï¿½Bï¿½ï¿½ï¿½ï¿½ï¿½
         Pokemon = new Pokemon(_base, level);
 
         Image image = GetComponent<Image>();
@@ -31,5 +40,25 @@ public class BattleUnit : MonoBehaviour
         {
             image.sprite = Pokemon.Base.FrontSprite;
         }
+        PlayerEnterAnimation();
+    }
+    //ç™»å ´Animation
+    public void PlayerEnterAnimation()
+    {
+        if (isPlayerUnit)
+        {
+            //å·¦ç«¯ã«é…ç½®
+            transform.localPosition=new Vector3(-1250,originalPos.y);
+        }
+        else
+        {
+            //å³ç«¯ã«é…ç½®
+            transform.localPosition=new Vector3(1200,originalPos.y);
+
+
+        }
+        //æˆ¦é—˜æ™‚ã®ä½ç½®ã¾ã§ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³
+      
+
     }
 }
