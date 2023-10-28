@@ -93,4 +93,14 @@ public class BattleUnit : MonoBehaviour
 
     }
 
+    //戦闘不能アニメーション
+    public void PlayerFaintAnimation()
+    {
+        //下に下がりながら薄くなる
+        Sequence sequence = DOTween.Sequence();
+        sequence.Append(transform.DOLocalMoveY(originalPos.y-150f,0.5f));//下に行く
+        sequence.Join(image.DOFade(0,0.5f)); //0.5秒かけて色が薄くなる
+
+        
+    }
 }

@@ -70,6 +70,7 @@ public class BattleSystem : MonoBehaviour
     if (damageDetails.Fainted)
     {
         yield return dialogBox.TypeDialog($"{enemyUnit.Pokemon.Base.Name} は戦闘不能になった！");
+        enemyUnit.PlayerFaintAnimation();
         // 戦闘終了の処理を追加するか、次のステップに進むかを決めるロジックをここに追加
     }
     else
@@ -99,6 +100,7 @@ IEnumerator EnemyMove()
     if (damageDetails.Fainted)
     {
         yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.Name} は戦闘不能になった！");
+        playerUnit.PlayerFaintAnimation();
         // 戦闘終了の処理を追加するか、次のステップに進むかを決めるロジックをここに追加
     }
     else
