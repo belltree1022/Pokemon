@@ -58,6 +58,9 @@ public class BattleSystem : MonoBehaviour
     Move move = playerUnit.Pokemon.Moves[currentMove];
     Debug.Log("Hello");
     yield return dialogBox.TypeDialog($" {playerUnit.Pokemon.Base.Name} は {move.Base.Name} を使った");
+    playerUnit.PlayerAttackAnimation();
+    yield return new WaitForSeconds(0.7f);//攻撃を受けてから動くのが早いので調節
+    enemyUnit.PlayerHitAnimation();
     
     // ダメージ計算
     DamageDetails damageDetails = enemyUnit.Pokemon.TakeDamage(move, playerUnit.Pokemon);
@@ -83,6 +86,9 @@ IEnumerator EnemyMove()
     Move move = enemyUnit.Pokemon.GetRandomMove();
     Debug.Log("Hello");
     yield return dialogBox.TypeDialog($" {enemyUnit.Pokemon.Base.Name} は {move.Base.Name} を使った");
+    enemyUnit.PlayerAttackAnimation();
+    yield return new WaitForSeconds(0.7f);//攻撃を受けてから動くのが早いので調節
+    playerUnit.PlayerHitAnimation();
     
     // ダメージ計算
     DamageDetails damageDetails = playerUnit.Pokemon.TakeDamage(move, enemyUnit.Pokemon);//プレイヤーがダメージを受けて、敵がダメージを与えるからTakeDmageの中はenemyUnit
