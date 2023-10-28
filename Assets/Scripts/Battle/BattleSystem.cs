@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -131,7 +131,7 @@ IEnumerator ShowDamageDetails(DamageDetails damageDetails)//タイプや状態�
       
 }
 
-    private void Update()
+    public void HandleUpdate()
     {
         if (state == BattleState.PlayerAction)
         {

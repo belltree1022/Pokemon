@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    //SerializeField‚Å•t—^‚³‚ê‚½‚à‚Ì‚ªƒCƒ“ƒXƒyƒNƒ^[‚É•\¦A
-    [SerializeField] float moveSpeed;// “®‚­‘¬‚³‚ğ’è‹`‚µ‚ÄAƒCƒ“ƒXƒyƒNƒ^[‚É•\¦
+    //SerializeFieldï¿½Å•tï¿½^ï¿½ï¿½ï¿½ê‚½ï¿½ï¿½ï¿½Ì‚ï¿½ï¿½Cï¿½ï¿½ï¿½Xï¿½yï¿½Nï¿½^ï¿½[ï¿½É•\ï¿½ï¿½ï¿½A
+    [SerializeField] float moveSpeed;// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½`ï¿½ï¿½ï¿½ÄAï¿½Cï¿½ï¿½ï¿½Xï¿½yï¿½Nï¿½^ï¿½[ï¿½É•\ï¿½ï¿½
 
-    bool isMoveing; //ismoving‚ÌboolŒ^ATrue‚ÆFalse‚©‚ğæ‚é
-    Vector2 input; //2DƒxƒNƒgƒ‹‚Ì—v‘f‚ğ‘ã“üiX‚ª…•½AY‚ªc•ûŒüj
+    bool isMoveing; //ismovingï¿½ï¿½boolï¿½^ï¿½ATrueï¿½ï¿½Falseï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    Vector2 input; //2Dï¿½xï¿½Nï¿½gï¿½ï¿½ï¿½Ì—vï¿½fï¿½ï¿½ï¿½ï¿½ï¿½iXï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½AYï¿½ï¿½ï¿½cï¿½ï¿½ï¿½ï¿½ï¿½j
 
-    Animator animator;//ƒAƒjƒ[ƒ^‹@”\
+    Animator animator;//ï¿½Aï¿½jï¿½ï¿½ï¿½[ï¿½^ï¿½@ï¿½\
 
-    //•Ç”»’è‚ÌLayer
+    //ï¿½Ç”ï¿½ï¿½ï¿½ï¿½Layer
     [SerializeField] LayerMask SolidObjestLayer;//
-    //‘‚Ş‚ç‚k‚‚™‚…‚’‚Ì”»’è
+    //ï¿½ï¿½ï¿½Ş‚ï¿½kï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì”ï¿½ï¿½ï¿½
     [SerializeField] LayerMask longGrassLayer;
     private void Awake()
     {
@@ -24,17 +24,17 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
 
     // Update is called once per frame
-    void Update()
+    public void HandleUpdate()
     {
         
-        if (!isMoveing)//ismoving‚ÅˆÚ“®’†‚É‚Í“ü—Í‚ğó‚¯•t‚¯‚È‚¢
+        if (!isMoveing)//ismovingï¿½ÅˆÚ“ï¿½ï¿½ï¿½ï¿½É‚Í“ï¿½ï¿½Í‚ï¿½ï¿½ó‚¯•tï¿½ï¿½ï¿½È‚ï¿½
         {
-            //“¾‚½î•ñ‚ğ•Û‚·‚é‚½‚ß‚É’è‹`•t‚¯@//ƒL[ƒ{[ƒh‚Ì“ü—Í‚ª‚ ‚Á‚½‚ç‚»‚Ì•ûŒü‚É“®‚­
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ûï¿½ï¿½ï¿½ï¿½é‚½ï¿½ß‚É’ï¿½`ï¿½tï¿½ï¿½ï¿½@//ï¿½Lï¿½[ï¿½{ï¿½[ï¿½hï¿½Ì“ï¿½ï¿½Í‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ç‚»ï¿½Ì•ï¿½ï¿½ï¿½ï¿½É“ï¿½ï¿½ï¿½
             input.x = Input.GetAxisRaw("Horizontal");
             input.y = Input.GetAxisRaw("Vertical");
 
             
-            if (input.x != 0) //Î‚ßˆÚ“®@‚±‚ê‚Å‹Ö~‚Å‚«‚é
+            if (input.x != 0) //ï¿½Î‚ßˆÚ“ï¿½ï¿½@ï¿½ï¿½ï¿½ï¿½Å‹Ö~ï¿½Å‚ï¿½ï¿½ï¿½
             {
                 input.y = 0;
             }
@@ -49,7 +49,9 @@ public class PlayerController : MonoBehaviour
                
                 Vector2 targetPos = transform.position;
                 targetPos += input;
-                if (IsWalkable(targetPos)){@//“ü—Í‚·‚é‘O‚É•à‚¯‚é‚©‚Ç‚¤‚©‚ğŠm”F‚·‚é
+                if (IsWalkable(targetPos))
+                {
+
                     StartCoroutine(Move(targetPos));
                 }
 
@@ -63,7 +65,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    //ƒRƒ‹[ƒ`ƒ“‚ğg—p‚µ‚Ä™X‚ÉˆÚ“®
+    //ï¿½Rï¿½ï¿½ï¿½[ï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½gï¿½pï¿½ï¿½ï¿½Äï¿½ï¿½Xï¿½ÉˆÚ“ï¿½
     IEnumerator Move(Vector3 targetPos)
     {
 
@@ -71,13 +73,13 @@ public class PlayerController : MonoBehaviour
 
         isMoveing = true;
 
-        //targetPos‚ÆŒ»İ‚ÌêŠ‚ğˆø‚«Z@targetpos‚Æ‚Ì·‚ª¶‚É‚ ‚é‚È‚çŒJ‚è•Ô‚·
+        //targetPosï¿½ÆŒï¿½ï¿½İ‚ÌêŠï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Zï¿½@targetposï¿½Æ‚Ìï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É‚ï¿½ï¿½ï¿½È‚ï¿½Jï¿½ï¿½Ô‚ï¿½
         while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
         {
-            //targetpos‚É‹ß‚Ã‚¯‚é
+            //targetposï¿½É‹ß‚Ã‚ï¿½ï¿½ï¿½
             transform.position = Vector3.MoveTowards(
-                transform.position,//Œ»İ‚ÌêŠ
-                targetPos,//–Ú“I’n
+                transform.position,//ï¿½ï¿½ï¿½İ‚ÌêŠ
+                targetPos,//ï¿½Ú“Iï¿½n
                 moveSpeed*Time.deltaTime);
 
             yield return null;
@@ -87,10 +89,10 @@ public class PlayerController : MonoBehaviour
         CheckForEncounters();
     }
 
-    //targetPos‚ÉˆÚ“®‰Â”\‚©‚ğ’²‚×‚éŠÖ”
+    //targetPosï¿½ÉˆÚ“ï¿½ï¿½Â”\ï¿½ï¿½ï¿½ğ’²‚×‚ï¿½Öï¿½
     bool IsWalkable(Vector2 targetPos)
     {
-        //tagetPos‚É”¼Œa0.2‚†‚Ì‰~‚Ì‚q‚‚™‚ğ”ò‚Î‚µ‚ÄA‚Ô‚Â‚©‚ç‚È‚©‚Á‚½‚ç‚e‚‚Œ‚“‚…
+        //tagetPosï¿½É”ï¿½ï¿½a0.2ï¿½ï¿½ï¿½Ì‰~ï¿½Ì‚qï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î‚ï¿½ï¿½ÄAï¿½Ô‚Â‚ï¿½ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½eï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         return Physics2D.OverlapCircle(targetPos, 0.2f, SolidObjestLayer) == false;
 
     }
@@ -98,14 +100,14 @@ public class PlayerController : MonoBehaviour
         {
             if (Physics2D.OverlapCircle(transform.position, 0.2f, longGrassLayer))
             {
-                //ƒ‰ƒ“ƒ_ƒ€ƒJƒEƒ“ƒg
+                //ï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Jï¿½Eï¿½ï¿½ï¿½g
                 if (Random.Range(0, 100) < 10)
                 {
 
-                //random.range(0,100):0~99‚Ü‚Å‚Ì‚Ç‚ê‚©‚Ì”š‚ªo‚é
-                //10‚æ‚è¬‚³‚¢”š‚Í‚O`‚X‚Ü‚Å‚Ì10ŒÂ
-                //10ˆÈã‚Ì”š‚Í10`99‚Ü‚Å‚Ì99ŒÂ
-                Debug.Log("ƒ‚ƒ“ƒXƒ^[‚É‘˜‹ö");
+                //random.range(0,100):0~99ï¿½Ü‚Å‚Ì‚Ç‚ê‚©ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½ï¿½oï¿½ï¿½
+                //10ï¿½ï¿½è¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í‚Oï¿½`ï¿½Xï¿½Ü‚Å‚ï¿½10ï¿½ï¿½
+                //10ï¿½Èï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½10ï¿½`99ï¿½Ü‚Å‚ï¿½99ï¿½ï¿½
+                Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½^ï¿½[ï¿½É‘ï¿½ï¿½ï¿½");
                 }
 
             }
