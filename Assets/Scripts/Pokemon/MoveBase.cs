@@ -21,4 +21,21 @@ public class MoveBase : ScriptableObject
     public PokemonType Type { get => type; }
     public int Power { get => power; }
     public int PP { get => pp; }
+
+    //特殊技、特殊タイプ
+    public bool InSpecial
+    {
+        get
+        {
+            if (type==PokemonType.Fire || type==PokemonType.Water||type==PokemonType.Grass
+            || type==PokemonType.Ice || type==PokemonType.Electric||type==PokemonType.Dragon)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
 }

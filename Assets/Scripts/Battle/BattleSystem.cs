@@ -61,6 +61,7 @@ public class BattleSystem : MonoBehaviour
     state = BattleState.Busy;
     // 技を決定
     Move move = playerUnit.Pokemon.Moves[currentMove];
+    move.PP--;
     Debug.Log("Hello");
     yield return dialogBox.TypeDialog($" {playerUnit.Pokemon.Base.Name} は {move.Base.Name} を使った");
     playerUnit.PlayerAttackAnimation();
@@ -93,6 +94,8 @@ IEnumerator EnemyMove()
      state = BattleState.EnemyMove;
     // 技を決定:ランダムになる　敵の行動
     Move move = enemyUnit.Pokemon.GetRandomMove();
+    //PP消費
+    move.PP--;
     Debug.Log("Hello");
     yield return dialogBox.TypeDialog($" {enemyUnit.Pokemon.Base.Name} は {move.Base.Name} を使った");
     enemyUnit.PlayerAttackAnimation();

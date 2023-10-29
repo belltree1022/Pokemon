@@ -126,9 +126,18 @@ public int MaxHp
             Critical=critical,//きゅうしょか
             TypeEffectiveness=type//タイプ
         };
+        
+        //特殊技の場合
+        float attack=attacker.Attack;
+        float defense=Defense;
+        if (move.Base.InSpecial)
+        {
+            attack=attacker.SpAttack;
+            defense=SpDefense;
+        }
+        
+        
         float modififers = Random.Range(0.85f,1f)*type*critical
-        
-        
         ;//ダメージが１００％なのか８５％なのか,タイプの相性も追加
         float a = (2*attacker.Level+10)/250f; //レベルに応じてダメージ変化
         float d = a*move.Base.Power*((float)attacker.Attack/Defense)+2;//技の威力にレベルが依存
