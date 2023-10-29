@@ -4433,7 +4433,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &854839303
 Transform:
   m_ObjectHideFlags: 0
@@ -4573,6 +4573,7 @@ MonoBehaviour:
   longGrassLayer:
     serializedVersion: 2
     m_Bits: 128
+  gameController: {fileID: 1830603066}
 --- !u!95 &1025927668
 Animator:
   serializedVersion: 5
@@ -7337,6 +7338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 1025927667}
   battleSystem: {fileID: 854839304}
+  gameController: {fileID: 0}
 --- !u!4 &1830603067
 Transform:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] LayerMask SolidObjestLayer;//
     //���ނ�k���������̔���
     [SerializeField] LayerMask longGrassLayer;
-    
+    [SerializeField] GameController gameController;
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -109,6 +109,7 @@ public void HandUpdate()
                 //10��菬���������͂O�`�X�܂ł�10��
                 //10�ȏ�̐�����10�`99�܂ł�99��
                 Debug.Log("モンスターに遭遇");
+                gameController.StartBattle();
     
                 }
 
