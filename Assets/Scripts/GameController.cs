@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour
     {
         state = GameState.Battle;
         battleSystem.gameObject.SetActive(true);
+        battleSystem.StartBattle();
         
     }
     public void EndBattle()

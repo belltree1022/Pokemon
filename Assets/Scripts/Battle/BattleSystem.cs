@@ -21,7 +21,7 @@ public class BattleSystem : MonoBehaviour
     BattleState state;
     int currentAction; //0:Fight 1:Run
     int currentMove;
-    private void Start()
+    public void StartBattle()
     {
         StartCoroutine(SetupBattle());//setupbattleのコルーチンを開始、コルーチン：中断できる処理のまとまり、数秒後に何か処理を行いたいときややめたいときに使用
     }
