@@ -17,6 +17,7 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] BattleHud playerHud;//バトルシステムのオブジェクトplayerHudtのプロジェクトをインスペクターに追加できるようにする
     [SerializeField] BattleHud enemyHud;//バトルシステムのオブジェクトにenemyHudtのプロジェクトをインスペクターに追加できるようにする
     [SerializeField] BattleDialogBox dialogBox;//バトルシステムのオブジェクトにdialogBoxのプロジェクトをインスペクターに追加できるようにする
+    [SerializeField] GameController gameController;
     BattleState state;
     int currentAction; //0:Fight 1:Run
     int currentMove;
@@ -71,6 +72,8 @@ public class BattleSystem : MonoBehaviour
     {
         yield return dialogBox.TypeDialog($"{enemyUnit.Pokemon.Base.Name} は戦闘不能になった！");
         enemyUnit.PlayerFaintAnimation();
+        yield return new WaitForSeconds(0.7f);
+        gameController.EndBattle();
         // 戦闘終了の処理を追加するか、次のステップに進むかを決めるロジックをここに追加
     }
     else
@@ -101,6 +104,9 @@ IEnumerator EnemyMove()
     {
         yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.Name} は戦闘不能になった！");
         playerUnit.PlayerFaintAnimation();
+        yield return new WaitForSeconds(0.7f);
+        gameController.EndBattle();
+       
         // 戦闘終了の処理を追加するか、次のステップに進むかを決めるロジックをここに追加
     }
     else
