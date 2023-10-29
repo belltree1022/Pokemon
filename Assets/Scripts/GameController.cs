@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 public enum GameState
 {
     FreeRoam,
@@ -14,6 +15,15 @@ public class GameController : MonoBehaviour
     
 
     GameState state = GameState.FreeRoam;
+
+    private void Start()
+    {
+        playerController.OnEncounted+=StartBattle;
+        battleSystem.BattleOver+=EndBattle;
+    }
+
+
+
     public void StartBattle()
     {
         state = GameState.Battle;
