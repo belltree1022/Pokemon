@@ -131,7 +131,7 @@ IEnumerator ShowDamageDetails(DamageDetails damageDetails)//タイプや状態�
       
 }
 
-    public void HandleUpdate()
+    public void HandUpdate()
     {
         if (state == BattleState.PlayerAction)
         {

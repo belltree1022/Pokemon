@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] LayerMask SolidObjestLayer;//
     //���ނ�k���������̔���
     [SerializeField] LayerMask longGrassLayer;
+    
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -24,7 +25,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
 
     // Update is called once per frame
-    public void HandleUpdate()
+public void HandUpdate()
     {
         
         if (!isMoveing)//ismoving�ňړ����ɂ͓��͂��󂯕t���Ȃ�
@@ -107,7 +108,8 @@ public class PlayerController : MonoBehaviour
                 //random.range(0,100):0~99�܂ł̂ǂꂩ�̐������o��
                 //10��菬���������͂O�`�X�܂ł�10��
                 //10�ȏ�̐�����10�`99�܂ł�99��
-                Debug.Log("�����X�^�[�ɑ���");
+                Debug.Log("モンスターに遭遇");
+    
                 }
 
             }

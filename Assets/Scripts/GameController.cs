@@ -2,34 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public enum GameState
 {
-    FreeRoam,//マップ移動
+    FreeRoam,
     Battle,
 }
 
+
+
+
 public class GameController : MonoBehaviour
 {
-    //ゲームの状態を管理
-    [SerializeField] PlayerController playerController;
-    [SerializeField] BattleSystem battleSystem;
+    [SerializeField]  PlayerController playerController;
+    [SerializeField]  BattleSystem battleSystem;
 
+    GameState state = GameState.FreeRoam;
 
-    GameState state=GameState.FreeRoam;
-
-
+    // ゲームの状態を管理
     void Update()
     {
-        if (state==GameState.FreeRoam)//マップだったら
+        if (state==GameState.FreeRoam)
         {
-            playerController.HandleUpdate();
-   
+            playerController.HandUpdate();
         }
         else if (state==GameState.Battle)
         {
-            //battlesysytem
-            battleSystem.HandleUpdate();
+            battleSystem.HandUpdate();
         }
         
     }
