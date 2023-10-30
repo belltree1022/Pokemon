@@ -120,7 +120,24 @@ IEnumerator EnemyMove()
         playerUnit.PlayerFaintAnimation();
         yield return new WaitForSeconds(0.7f);
         //gameController.EndBattle();
-        BattleOver();
+        //戦えるポケモンがいるなら次のポケモンにセットして、自分のターンにする
+        Pokemon nextPokemon=playerParty.GetHealthyPokemon();
+        if (nextPokemon==null)
+        {
+            BattleOver();
+
+        }
+        else
+        {
+            //nextセット
+        playerUnit.Setup(nextPokemon);//プレイヤーのポケモンセット
+        playerHud.SetData(playerUnit.Pokemon);
+        dialogBox.SetMovenames(playerUnit.Pokemon.Moves);
+        yield return dialogBox.TypeDialog($"いけ！ {playerUnit.Pokemon.Base.Name} !");
+        
+        PlayerAction();
+        }
+        
        
         // 戦闘終了の処理を追加するか、次のステップに進むかを決めるロジックをここに追加
     }
