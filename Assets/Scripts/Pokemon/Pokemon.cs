@@ -7,9 +7,14 @@ using static PokemonBase;
 
 //���x���ɉ������X�e�[�^�X�̈Ⴄ�����X�^�[�𐶐�����N���X
 //���Ӂ@�f�[�^�݈̂���
+
+[System.Serializable]
 public class Pokemon
 {
-    //�x�[�X�ƂȂ�f�[�^
+    //インスペクターから実行できるようにする
+    [SerializeField] PokemonBase _base;
+    [SerializeField] int level;
+        //�x�[�X�ƂȂ�f�[�^
    public PokemonBase Base { get; set; }
    public int Level { get; set; }
 
