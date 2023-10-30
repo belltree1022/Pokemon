@@ -25,15 +25,21 @@ public class BattleSystem : MonoBehaviour
     BattleState state;
     int currentAction; //0:Fight 1:Run
     int currentMove;
-    public void StartBattle()
+
+    //これらの変数をどこから取得するか？
+    PokemonParty playerParty;
+    Pokemon wildPokemon;
+    public void StartBattle( PokemonParty playerParty,Pokemon wildPokemon)
     {
+        this.playerParty=playerParty;
+        this.wildPokemon=wildPokemon;
         StartCoroutine(SetupBattle());//setupbattleのコルーチンを開始、コルーチン：中断できる処理のまとまり、数秒後に何か処理を行いたいときややめたいときに使用
     }
     IEnumerator SetupBattle()
     {
         state = BattleState.Start;
-        playerUnit.Setup();
-        enemyUnit.Setup();
+        playerUnit.Setup(playerParty.GetHealthyPokemon());//プレイヤーのポケモンセット
+        enemyUnit.Setup(wildPokemon);//野生ポケモンセット
         playerHud.SetData(playerUnit.Pokemon);
         enemyHud.SetData(enemyUnit.Pokemon);
         dialogBox.SetMovenames(playerUnit.Pokemon.Moves);

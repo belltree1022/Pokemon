@@ -13,6 +13,8 @@ public class MapArea : MonoBehaviour
     public Pokemon GetRandomWildPokemon()
     {
         int r = Random.Range(0,pokemons.Count);
-        return pokemons[r];
+        Pokemon pokemon =pokemons[r];
+        pokemon.Init(); //出会うたびに初期化
+        return pokemon;
     }
 }

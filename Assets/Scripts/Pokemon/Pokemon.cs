@@ -11,12 +11,15 @@ using static PokemonBase;
 [System.Serializable]
 public class Pokemon
 {
+//#14-2の8:50秒あたりでエラーが起きるが、原因はデータの初期化がされていないから　また_baseとlevelが使われていないい
+
     //インスペクターから実行できるようにする
-    [SerializeField] PokemonBase _base;
+    //変更：モンスター
+    [SerializeField] PokemonBase _base;//戦わせるモンスターをセット
     [SerializeField] int level;
         //�x�[�X�ƂȂ�f�[�^
-   public PokemonBase Base { get; set; }
-   public int Level { get; set; }
+   public PokemonBase Base { get=>_base; }
+   public int Level { get=>level; }
 
 
     public int HP { get; set; }
@@ -26,17 +29,16 @@ public class Pokemon
 
 
     //�R���X�g���N�^�[�@�������̏����ݒ�
-    public Pokemon(PokemonBase pBase, int pLevel)
+    public void Init()
     {
-        Base = pBase;
-        Level = pLevel;
+       
         HP = MaxHp;
 
         Moves = new List<Move>();
 
 
         //�g����Z�̐ݒ�:�o����Z�̃��x���ȏ�Ȃ�Moves�ɒǉ�
-        foreach (LearnableMove learnableMove in pBase.LearnableMoves)
+        foreach (LearnableMove learnableMove in Base.LearnableMoves)
         {
             if (Level >=learnableMove.Level)
             {

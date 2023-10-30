@@ -6,8 +6,6 @@ using DG.Tweening;
 
 public class BattleUnit : MonoBehaviour
 {
-    [SerializeField] PokemonBase _base;//��킹�郂���X�^�[�ݒ�
-    [SerializeField] int level;
     [SerializeField] bool isPlayerUnit; //���ʉ�
 
 
@@ -29,11 +27,11 @@ public class BattleUnit : MonoBehaviour
     }
 
 
-    public void Setup()
+    public void Setup(Pokemon pokemon)
     {
         //_�x�[�X���烌�x���ɉ����������X�^�[�𐶐�
         //battelesysytem�Ŏg������v���p�e�B�����
-        Pokemon = new Pokemon(_base, level);
+        Pokemon =pokemon;
 
         
         if (isPlayerUnit)

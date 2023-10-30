@@ -28,7 +28,11 @@ public class GameController : MonoBehaviour
     {
         state = GameState.Battle;
         battleSystem.gameObject.SetActive(true);
-        battleSystem.StartBattle();
+        //パーティーと野生ポケモンの取得
+        PokemonParty playerParty=playerController.GetComponent<PokemonParty>();
+        //野生ポケモン、マップの取得 FindObject0fTypeはシーン内から一致するコンポーネントを１つ取得すする
+        Pokemon wildPokemon = FindObjectOfType<MapArea>().GetRandomWildPokemon();
+        battleSystem.StartBattle(playerParty,wildPokemon);
         
     }
     public void EndBattle()
